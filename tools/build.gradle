@@ -1,10 +1,13 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("maven-publish")
+
 }
 
+
 android {
-    namespace 'com.yoake.tools'
+    namespace "com.yoake.tools"
     compileSdk 34
 
     defaultConfig {
@@ -28,6 +31,20 @@ android {
         jvmTarget = '1.8'
     }
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.yoake.tools'
+                artifactId = 'tools'
+                version = '1.0.0'
+            }
+        }
+    }
+}
+
 
 dependencies {
 
