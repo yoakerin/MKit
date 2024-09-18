@@ -4,9 +4,8 @@ plugins {
     id("maven-publish")
 }
 
-
 android {
-    namespace 'com.yoake.tools'
+    namespace 'com.yoake.native_location'
     compileSdk 34
 
     defaultConfig {
@@ -30,14 +29,13 @@ android {
         jvmTarget = '1.8'
     }
 }
-
 afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
                 from components.release
                 groupId = 'com.yoake'
-                artifactId = 'tools'
+                artifactId = 'native_location'
                 version = '1.0.0'
             }
         }
@@ -50,7 +48,6 @@ dependencies {
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
     implementation libs.material
-    implementation libs.androidx.palette.ktx
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core

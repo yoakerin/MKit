@@ -42,5 +42,6 @@ dependencies {
     androidTestImplementation libs.androidx.espresso.core
    // implementation project(':tools')
    // implementation 'com.github.yoake:tools:1.0.0'
-    implementation 'com.github.yoakerin:MKit:test1'
+   // implementation 'com.github.yoakerin:MKit:test1'
+    implementation 'com.github.yoakerin:tools:1.0.0'
 }
