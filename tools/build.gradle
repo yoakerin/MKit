@@ -37,7 +37,7 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.yoake.tools'
+                groupId = 'com.yoake'
                 artifactId = 'tools'
                 version = '1.0.0'
             }
