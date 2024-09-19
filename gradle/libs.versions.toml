@@ -8,6 +8,20 @@ espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
 paletteKtx = "1.0.0"
+wechatsdk = "6.8.28"
+sinaweibosdk = "13.10.2"
+
+# 友盟基础组件库
+umeng_common = "9.6.8"
+umeng_asms = "1.8.2"
+
+# 友盟分享库
+umeng_share_core = "7.3.3"
+umeng_share_wx = "7.3.3"
+umeng_share_sina = "7.3.3"
+umeng_share_qq = "7.3.3"
+
+quickAdapter = "4.1.4"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -16,6 +30,27 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-palette-ktx = { group = "androidx.palette", name = "palette-ktx", version.ref = "paletteKtx" }
+
+# 强大而灵活的RecyclerView Adapter
+# https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+quick_adapter = { group = "io.github.cymchad", name = "BaseRecyclerViewAdapterHelper4", version.ref = "quickAdapter" }
+# 微信opensdk
+# https://developers.weixin.qq.com/doc/oplatform/Downloads/Android_SDK.html
+wechatsdk = { group = "com.tencent.mm.opensdk", name = "wechat-sdk-android", version.ref = "wechatsdk" }
+
+# 新浪微博sdk
+# https://github.com/sinaweibosdk/weibo_android_sdk
+sinaweibosdk = { group = "io.github.sinaweibosdk", name = "core", version.ref = "sinaweibosdk" }
+
+# 友盟基础组件库
+umeng_common = { group = "com.umeng.umsdk", name = "common", version.ref = "umeng_common" }
+umeng_asms = { group = "com.umeng.umsdk", name = "asms", version.ref = "umeng_asms" }
+
+# 友盟分享库
+umeng_share_core = { group = "com.umeng.umsdk", name = "share-core", version.ref = "umeng_share_core" }
+umeng_share_wx = { group = "com.umeng.umsdk", name = "share-wx", version.ref = "umeng_share_wx" }
+umeng_share_sina = { group = "com.umeng.umsdk", name = "share-sina", version.ref = "umeng_share_sina" }
+umeng_share_qq = { group = "com.umeng.umsdk", name = "share-qq", version.ref = "umeng_share_qq" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

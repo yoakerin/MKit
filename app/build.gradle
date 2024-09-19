@@ -4,11 +4,20 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('/Users/yoake/Documents/Android/other/myCode/Mkit/hbdt.keystore')
+            storePassword '123456'
+            keyAlias 'hbdtkey'
+            keyPassword '123456'
+        }
+    }
     namespace 'com.yoake.mkit'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.yoake.mkit"
+       // applicationId "com.yoake.mkit"
+        applicationId = "com.ihope.hbdt"
         minSdk 21
         targetSdk 34
         versionCode 1
@@ -40,9 +49,12 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
-    implementation project(':native_location')
-   implementation project(':tools')
-   // implementation 'com.github.yoake:tools:1.0.0'
-   // implementation 'com.github.yoakerin:MKit:test1'
-  //  implementation 'com.github.yoakerin:tools:1.0.0'
+    implementation project(':location')
+    //implementation project(':tools')
+    implementation project(':widgets')
+    implementation project(':umeng-share')
+    implementation libs.umeng.share.wx
+    implementation libs.wechatsdk
+    implementation 'com.github.yoakerin.MKit:tools:test4'
+   // implementation 'com.github.yoakerin.MKit:native_location:test4'
 }

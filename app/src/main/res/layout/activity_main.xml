@@ -4,26 +4,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:orientation="vertical">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp20">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/custom_divider"
+            android:showDividers="middle">
+
+            <com.yoake.widgets.progress.R2CountDownProgressView
+                android:id="@+id/testCountTimeProgressView"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp60"
+                app:backgroundColorCenter="@color/back"
+                app:borderBottomColor="@color/back"
+                app:countTime="5000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:titleCenterSize="@dimen/dp13"
+                app:titleCenterText="跳过" />
+
+            <com.yoake.widgets.image.R2RoundImageView
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp60"
+                android:scaleType="centerCrop"
+                android:src="@drawable/tools_preview_logo"
+                app:r2iv_border_color="@color/green"
+                app:r2iv_border_width="@dimen/dp1"
+                app:r2iv_corner_radius="@dimen/dp10"
+                app:r2iv_is_touch_select_mode_enabled="true"
+                app:r2iv_selected_border_color="@color/red" />
+        </LinearLayout>
+
+    </HorizontalScrollView>
 
 
     <Button
-        android:id="@+id/testAlertDialog"
+        android:id="@+id/but1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="仿IOS对话框" />
 
     <Button
-        android:id="@+id/testShare"
+        android:id="@+id/but2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="友盟分享" />
 
     <Button
-        android:id="@+id/testLocation"
+        android:id="@+id/but3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

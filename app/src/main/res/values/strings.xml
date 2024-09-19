@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Mkit</string>
+    <string name="app_channel">channel</string>
+    <string name="umeng_app_key">624ea7070059ce2bad25815c</string>
+    <string name="umeng_push_secret">umeng_push_secret</string>
+    <string name="wx_app_id">wx68200b2cfb27d37e</string>
+    <string name="wx_app_key">86d078fd788d6ad4648ba17bbab711a0</string>
+    <string name="qq_app_id">1101735227</string>
+    <!--tencent+qq_app_id-->
+    <string name="tencent_auth_scheme">tencent1101735227</string>
+    <string name="qq_app_key">udJsjs4KHsbQbTD8</string>
+    <string name="sina_app_id">2757191827</string>
+    <string name="sina_app_key">7c9d41f39534a2dea25250630ab225c1</string>
+    <string name="sina_redirect_url">http://sns.whalecloud.com</string>
 </resources>

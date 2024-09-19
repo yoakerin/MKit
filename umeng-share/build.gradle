@@ -1,0 +1,57 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
+}
+
+android {
+    namespace 'com.yoake.umeng_share'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 21
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+
+
+    //友盟基础库
+    implementation libs.umeng.common
+    implementation libs.umeng.asms
+    //友盟分享库
+    implementation libs.umeng.share.core
+    implementation libs.umeng.share.wx
+    implementation libs.umeng.share.sina
+    implementation libs.umeng.share.qq
+    //三方平台必要的库
+    implementation(files("libs/open_sdk_3.5.14.4_r377deaa_lite.jar"))
+    implementation libs.wechatsdk
+    compileOnly project(':tools')
+    implementation(libs.sinaweibosdk) {
+        exclude([module: "unspecified"])
+    }
+}

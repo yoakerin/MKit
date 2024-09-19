@@ -24,4 +24,6 @@ dependencyResolutionManagement {
 rootProject.name = "Mkit"
 include ':app'
 include ':tools'
-include ':native_location'
+include ':location'
+include ':widgets'
+include ':umeng-share'
