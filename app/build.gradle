@@ -49,12 +49,13 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
-    implementation project(':location')
+    //implementation project(':location')
     //implementation project(':tools')
-    implementation project(':widgets')
+   // implementation project(':widgets')
     implementation project(':umeng-share')
     implementation libs.umeng.share.wx
     implementation libs.wechatsdk
-    implementation 'com.github.yoakerin.MKit:tools:test4'
-   // implementation 'com.github.yoakerin.MKit:native_location:test4'
+    implementation 'com.github.yoakerin.MKit:tools:main-SNAPSHOT'
+    implementation 'com.github.yoakerin.MKit:wigets:main-SNAPSHOT'
+    implementation 'com.github.yoakerin.MKit:location:main-SNAPSHOT'
 }
