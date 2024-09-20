@@ -6,7 +6,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 
-class MediumTextView(context: Context, attrs: AttributeSet?) : AppCompatTextView(context, attrs) {
+class R2MediumTextView(context: Context, attrs: AttributeSet?) : AppCompatTextView(context, attrs) {
     private val mStrokeWidth = 1f
     private var flag: Boolean = true
 

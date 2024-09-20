@@ -28,7 +28,7 @@ import kotlin.text.Typography.nbsp
 import androidx.appcompat.R as AppCompatR
 
 class R2ReadMoreTextView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = R.attr.readMoreTextViewStyle
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = R.attr.r2readMoreTextViewStyle
 ) : AppCompatTextView(context, attrs, defStyleAttr) {
 
     private var readMoreMaxLines: Int = 2
@@ -63,17 +63,17 @@ class R2ReadMoreTextView @JvmOverloads constructor(
 
     init {
         context.obtainStyledAttributes(
-            attrs, R.styleable.ReadMoreTextView, defStyleAttr, 0
+            attrs, R.styleable.R2ReadMoreTextView, defStyleAttr, 0
         ).use { ta ->
             readMoreMaxLines = ta.getInt(
-                R.styleable.ReadMoreTextView_readMoreMaxLines, readMoreMaxLines
+                R.styleable.R2ReadMoreTextView_r2readMoreMaxLines, readMoreMaxLines
             )
             val readMoreOverflowValue = ta.getInt(
-                R.styleable.ReadMoreTextView_readMoreOverflow, readMoreOverflow.value
+                R.styleable.R2ReadMoreTextView_r2readMoreOverflow, readMoreOverflow.value
             )
             readMoreOverflow = Overflow.values().first { it.value == readMoreOverflowValue }
             readMoreText =
-                ta.getString(R.styleable.ReadMoreTextView_readMoreText)?.replace(' ', nbsp)
+                ta.getString(R.styleable.R2ReadMoreTextView_r2readMoreText)?.replace(' ', nbsp)
 
             val readMoreAttributes = readAttributesFromReadMoreTextAppearance(ta)
             readMoreTextSize = readMoreAttributes.textSize ?: DEFAULT_TEXT_SIZE
@@ -82,7 +82,7 @@ class R2ReadMoreTextView @JvmOverloads constructor(
             readMoreFontFamily = readMoreAttributes.fontFamily
             readMoreTextUnderline = readMoreAttributes.textUnderline ?: DEFAULT_TEXT_UNDERLINE
 
-            readLessText = ta.getString(R.styleable.ReadMoreTextView_readLessText)
+            readLessText = ta.getString(R.styleable.R2ReadMoreTextView_r2readLessText)
 
             val readLessAttributes = readAttributesFromReadLessTextAppearance(
                 ta, defaultAttributes = readMoreAttributes
@@ -94,7 +94,7 @@ class R2ReadMoreTextView @JvmOverloads constructor(
             readLessTextUnderline = readLessAttributes.textUnderline ?: DEFAULT_TEXT_UNDERLINE
 
             val readMoreToggleAreaValue = ta.getInt(
-                R.styleable.ReadMoreTextView_readMoreToggleArea, toggleArea.value
+                R.styleable.R2ReadMoreTextView_r2readMoreToggleArea, toggleArea.value
             )
             toggleArea = ToggleArea.values().first { it.value == readMoreToggleAreaValue }
         }
@@ -369,7 +369,7 @@ class R2ReadMoreTextView @JvmOverloads constructor(
         var textUnderline: Boolean? = null
 
         val readMoreTextAppearance = ta.getResourceId(
-            R.styleable.ReadMoreTextView_readMoreTextAppearance, ResourcesCompat.ID_NULL
+            R.styleable.R2ReadMoreTextView_r2readMoreTextAppearance, ResourcesCompat.ID_NULL
         )
         if (readMoreTextAppearance != ResourcesCompat.ID_NULL) {
             context.obtainStyledAttributes(
@@ -392,25 +392,25 @@ class R2ReadMoreTextView @JvmOverloads constructor(
                     ?: it.getFontFamilyFromTypeface(AppCompatR.styleable.TextAppearance_android_typeface)
             }
         }
-        if (ta.hasValue(R.styleable.ReadMoreTextView_readMoreTextSize)) {
+        if (ta.hasValue(R.styleable.R2ReadMoreTextView_r2readMoreTextSize)) {
             textSize = ta.getDimensionPixelSize(
-                R.styleable.ReadMoreTextView_readMoreTextSize, DEFAULT_TEXT_SIZE
+                R.styleable.R2ReadMoreTextView_r2readMoreTextSize, DEFAULT_TEXT_SIZE
             )
         }
         textColor = ta.getColorStateList(
-            R.styleable.ReadMoreTextView_readMoreTextColor
+            R.styleable.R2ReadMoreTextView_r2readMoreTextColor
         ) ?: textColor
-        if (ta.hasValue(R.styleable.ReadMoreTextView_readMoreTextStyle)) {
+        if (ta.hasValue(R.styleable.R2ReadMoreTextView_r2readMoreTextStyle)) {
             textStyle = ta.getInt(
-                R.styleable.ReadMoreTextView_readMoreTextStyle, DEFAULT_TEXT_STYLE
+                R.styleable.R2ReadMoreTextView_r2readMoreTextStyle, DEFAULT_TEXT_STYLE
             )
         }
-        fontFamily = ta.getString(R.styleable.ReadMoreTextView_readMoreFontFamily)
-            ?: ta.getFontFamilyFromTypeface(R.styleable.ReadMoreTextView_readMoreTypeface)
+        fontFamily = ta.getString(R.styleable.R2ReadMoreTextView_r2readMoreFontFamily)
+            ?: ta.getFontFamilyFromTypeface(R.styleable.R2ReadMoreTextView_r2readMoreTypeface)
                     ?: fontFamily
-        if (ta.hasValue(R.styleable.ReadMoreTextView_readMoreTextUnderline)) {
+        if (ta.hasValue(R.styleable.R2ReadMoreTextView_r2readMoreTextUnderline)) {
             textUnderline = ta.getBoolean(
-                R.styleable.ReadMoreTextView_readMoreTextUnderline, DEFAULT_TEXT_UNDERLINE
+                R.styleable.R2ReadMoreTextView_r2readMoreTextUnderline, DEFAULT_TEXT_UNDERLINE
             )
         }
         return Attributes(
@@ -434,7 +434,7 @@ class R2ReadMoreTextView @JvmOverloads constructor(
         var textUnderline: Boolean? = null
 
         val readLessTextAppearance = ta.getResourceId(
-            R.styleable.ReadMoreTextView_readLessTextAppearance, ResourcesCompat.ID_NULL
+            R.styleable.R2ReadMoreTextView_r2readLessTextAppearance, ResourcesCompat.ID_NULL
         )
         if (readLessTextAppearance != ResourcesCompat.ID_NULL) {
             context.obtainStyledAttributes(
@@ -457,25 +457,25 @@ class R2ReadMoreTextView @JvmOverloads constructor(
                     ?: it.getFontFamilyFromTypeface(AppCompatR.styleable.TextAppearance_android_typeface)
             }
         }
-        if (ta.hasValue(R.styleable.ReadMoreTextView_readLessTextSize)) {
+        if (ta.hasValue(R.styleable.R2ReadMoreTextView_r2readLessTextSize)) {
             textSize = ta.getDimensionPixelSize(
-                R.styleable.ReadMoreTextView_readLessTextSize, DEFAULT_TEXT_SIZE
+                R.styleable.R2ReadMoreTextView_r2readLessTextSize, DEFAULT_TEXT_SIZE
             )
         }
         textColor = ta.getColorStateList(
-            R.styleable.ReadMoreTextView_readLessTextColor
+            R.styleable.R2ReadMoreTextView_r2readLessTextColor
         ) ?: textColor
-        if (ta.hasValue(R.styleable.ReadMoreTextView_readLessTextStyle)) {
+        if (ta.hasValue(R.styleable.R2ReadMoreTextView_r2readLessTextStyle)) {
             textStyle = ta.getInt(
-                R.styleable.ReadMoreTextView_readLessTextStyle, DEFAULT_TEXT_STYLE
+                R.styleable.R2ReadMoreTextView_r2readLessTextStyle, DEFAULT_TEXT_STYLE
             )
         }
-        fontFamily = ta.getString(R.styleable.ReadMoreTextView_readLessFontFamily)
-            ?: ta.getFontFamilyFromTypeface(R.styleable.ReadMoreTextView_readLessTypeface)
+        fontFamily = ta.getString(R.styleable.R2ReadMoreTextView_r2readLessFontFamily)
+            ?: ta.getFontFamilyFromTypeface(R.styleable.R2ReadMoreTextView_r2readLessTypeface)
                     ?: fontFamily
-        if (ta.hasValue(R.styleable.ReadMoreTextView_readLessTextUnderline)) {
+        if (ta.hasValue(R.styleable.R2ReadMoreTextView_r2readLessTextUnderline)) {
             textUnderline = ta.getBoolean(
-                R.styleable.ReadMoreTextView_readLessTextUnderline, DEFAULT_TEXT_UNDERLINE
+                R.styleable.R2ReadMoreTextView_r2readLessTextUnderline, DEFAULT_TEXT_UNDERLINE
             )
         }
         return Attributes(

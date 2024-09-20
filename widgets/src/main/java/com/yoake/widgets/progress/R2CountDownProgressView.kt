@@ -15,8 +15,8 @@ import com.yoake.widgets.R
 /**
  * 圆形倒计时
  */
-class R2CountDownProgressView(private val mContext: Context, attrs: AttributeSet? = null) : View(mContext, attrs), View.OnClickListener {
-
+class R2CountDownProgressView(private val mContext: Context, attrs: AttributeSet? = null) :
+    View(mContext, attrs), View.OnClickListener {
 
 
     /**
@@ -190,57 +190,60 @@ class R2CountDownProgressView(private val mContext: Context, attrs: AttributeSet
             R.styleable.R2CountDownProgressView,
         )
         _titleCenterTextSize = attr.getDimension(
-            R.styleable.R2CountDownProgressView_titleCenterSize,
+            R.styleable.R2CountDownProgressView_r2cd_titleCenterSize,
             spToPx(DEFAULT_TITLE_CENTER_SIZE)
         )
         titleCenterTextColor = attr.getColor(
-            R.styleable.R2CountDownProgressView_titleCenterColor,
+            R.styleable.R2CountDownProgressView_r2cd_titleCenterColor,
             DEFAULT_TITLE_CENTER_COLOR
         )
-        titleCenterText = attr.getString(R.styleable.R2CountDownProgressView_titleCenterText)
+        titleCenterText = attr.getString(R.styleable.R2CountDownProgressView_r2cd_titleCenterText)
             ?: DEFAULT_TITLE_CENTER_TEXT
 
         _borderWidth = attr.getDimension(
-            R.styleable.R2CountDownProgressView_borderWidth,
+            R.styleable.R2CountDownProgressView_r2cd_borderWidth,
             dpToPx(DEFAULT_BORDER_WIDTH)
         )
         borderDrawColor = attr.getColor(
-            R.styleable.R2CountDownProgressView_borderDrawColor,
+            R.styleable.R2CountDownProgressView_r2cd_borderDrawColor,
             DEFAULT_BORDER_DRAW_COLOR
         )
         borderBottomColor = attr.getColor(
-            R.styleable.R2CountDownProgressView_borderBottomColor,
+            R.styleable.R2CountDownProgressView_r2cd_borderBottomColor,
             DEFAULT_BORDER_BOTTOM_COLOR
         )
 
         _markBallWidth = attr.getDimension(
-            R.styleable.R2CountDownProgressView_markBallWidth,
+            R.styleable.R2CountDownProgressView_r2cd_markBallWidth,
             dpToPx(DEFAULT_MARK_BALL_WIDTH)
         )
         markBallColor = attr.getColor(
-            R.styleable.R2CountDownProgressView_markBallColor,
+            R.styleable.R2CountDownProgressView_r2cd_markBallColor,
             DEFAULT_MARK_BALL_COLOR
         )
         markBallFlag = attr.getBoolean(
-            R.styleable.R2CountDownProgressView_markBallFlag,
+            R.styleable.R2CountDownProgressView_r2cd_markBallFlag,
             DEFAULT_MARK_BALL_FLAG
         )
 
         backgroundColorCenter = attr.getColor(
-            R.styleable.R2CountDownProgressView_backgroundColorCenter,
+            R.styleable.R2CountDownProgressView_r2cd_backgroundColorCenter,
             DEFAULT_BACKGROUND_COLOR_CENTER
         )
 
         //起始位置角度
         startAngle =
-            attr.getFloat(R.styleable.R2CountDownProgressView_startAngle, DEFAULT_START_ANGLE)
+            attr.getFloat(R.styleable.R2CountDownProgressView_r2cd_startAngle, DEFAULT_START_ANGLE)
         clockwise =
-            attr.getBoolean(R.styleable.R2CountDownProgressView_clockwise, DEFAULT_CLOCKWISE)
+            attr.getBoolean(R.styleable.R2CountDownProgressView_r2cd_clockwise, DEFAULT_CLOCKWISE)
 
         textStyle =
-            attr.getInteger(R.styleable.R2CountDownProgressView_textStyle, DEFAULT_TEXTSTYLE)
+            attr.getInteger(R.styleable.R2CountDownProgressView_r2cd_textStyle, DEFAULT_TEXTSTYLE)
         countTime =
-            attr.getInt(R.styleable.R2CountDownProgressView_countTime, DEFAULT_COUNT_TIME.toInt())
+            attr.getInt(
+                R.styleable.R2CountDownProgressView_r2cd_countTime,
+                DEFAULT_COUNT_TIME.toInt()
+            )
                 .toLong()
         attr.recycle()
 

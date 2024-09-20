@@ -1,32 +1,29 @@
-package com.yoake.widgets.image;
+package com.yoake.widgets.layout;
 
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.Checkable;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
 
 import com.yoake.widgets.helper.RCAttrs;
 import com.yoake.widgets.helper.RCHelper;
 
 
-@SuppressLint("AppCompatCustomView")
-public class R2RoundImageView extends ImageView implements Checkable, RCAttrs {
-
+public class R2RoundFrameLayout extends FrameLayout implements Checkable, RCAttrs {
     RCHelper mRCHelper;
 
-    public R2RoundImageView(Context context) {
+    public R2RoundFrameLayout(Context context) {
         this(context, null);
     }
 
-    public R2RoundImageView(Context context, AttributeSet attrs) {
+    public R2RoundFrameLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public R2RoundImageView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public R2RoundFrameLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mRCHelper = new RCHelper();
         mRCHelper.initAttrs(context, attrs);
@@ -39,6 +36,14 @@ public class R2RoundImageView extends ImageView implements Checkable, RCAttrs {
     }
 
     @Override
+    protected void dispatchDraw(Canvas canvas) {
+        canvas.saveLayer(mRCHelper.mLayer, null, Canvas.ALL_SAVE_FLAG);
+        super.dispatchDraw(canvas);
+        mRCHelper.onClipDraw(canvas);
+        canvas.restore();
+    }
+
+    @Override
     public void draw(Canvas canvas) {
         if (mRCHelper.mClipBackground) {
             canvas.save();
@@ -48,14 +53,6 @@ public class R2RoundImageView extends ImageView implements Checkable, RCAttrs {
         } else {
             super.draw(canvas);
         }
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        canvas.saveLayer(mRCHelper.mLayer, null, Canvas.ALL_SAVE_FLAG);
-        super.onDraw(canvas);
-        mRCHelper.onClipDraw(canvas);
-        canvas.restore();
     }
 
     @Override
@@ -72,7 +69,6 @@ public class R2RoundImageView extends ImageView implements Checkable, RCAttrs {
         }
         return super.dispatchTouchEvent(ev);
     }
-
 
     //--- 公开接口 ----------------------------------------------------------------------------------
 
