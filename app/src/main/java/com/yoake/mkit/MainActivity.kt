@@ -5,12 +5,19 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.GridLayout
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
+import com.umeng.socialize.UMAuthListener
+import com.umeng.socialize.UMShareAPI
+import com.umeng.socialize.bean.SHARE_MEDIA
 import com.yoake.location.R2LocationManager
 import com.yoake.tools.R2Log
 import com.yoake.tools.kit.onClick
+import com.yoake.tools.kit.toast
 import com.yoake.tools.permissions.R2PermissionLauncher
 import com.yoake.umeng_share.R2SharePanelDialog
 import com.yoake.umeng_share.ShareInfoImp
@@ -28,10 +35,10 @@ class MainActivity : AppCompatActivity() {
         //
         findViewById<R2CountDownProgressView>(R.id.testCountTimeProgressView).startCountTimeAnimation()
         //
-        val btn1: Button = findViewById(R.id.but1)
-        val btn2: Button = findViewById(R.id.but2)
-        val btn3: Button = findViewById(R.id.but3)
-        btn1.onClick {
+        val container: GridLayout = findViewById(R.id.container)
+
+        val infoTv: TextView = findViewById(R.id.infoTv)
+        container[0].onClick {
             val myDialog = R2AlertDialog(this).builder()
             myDialog.setGone().setTitle("提示").setMsg("仿iOS的弹窗")
                 .setNegativeButton("取消") {
@@ -44,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
         //
 
-        btn2.onClick {
+        container[1].onClick {
             val dialog = R2SharePanelDialog(this)
             dialog.onItemClick = { position, item -> false }
             val shareInfo = ShareInfoImp(
@@ -59,9 +66,37 @@ class MainActivity : AppCompatActivity() {
                 setImageResource(com.yoake.tools.R.drawable.tools_preview_logo)
             }
             dialog.setDate(shareInfo, posterView = posterView)
-        }
 
-        btn3.onClick {
+        }
+        container[2].onClick {
+
+            UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.QQ, object : UMAuthListener {
+                override fun onStart(p0: SHARE_MEDIA?) {
+
+                }
+
+                @SuppressLint("SetTextI18n")
+                override fun onComplete(
+                    p0: SHARE_MEDIA?,
+                    p1: Int,
+                    p2: MutableMap<String, String>?
+                ) {
+                    p2?.forEach {
+                        R2Log.d("", "${it.key}=${it.value}")
+                    }
+                    infoTv.text ="昵称：${p2?.get("name")}"
+                }
+
+                override fun onError(p0: SHARE_MEDIA?, p1: Int, p2: Throwable?) {
+
+                }
+
+                override fun onCancel(p0: SHARE_MEDIA?, p1: Int) {
+                }
+
+            })
+        }
+        container[3].onClick {
             R2PermissionLauncher()
                 .with(this)
                 .denied { }
@@ -76,6 +111,7 @@ class MainActivity : AppCompatActivity() {
                                 val address = R2LocationManager.getInstance(this)
                                     .getAddressFromLocation(location)
                                 address?.let {
+                                    infoTv.text = "定位信息：${it.getAddressLine(0)}"
                                     for (i in 0 until it.maxAddressLineIndex)
                                         R2Log.d("", it.getAddressLine(i))
                                 }
@@ -98,4 +134,5 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         UmengKit.onActivityResult(this, requestCode, resultCode, data)
     }
+
 }

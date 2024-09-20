@@ -53,6 +53,7 @@ dependencies {
     implementation project(':tools')
     implementation project(':widgets')
     implementation project(':umeng-share')
+    implementation libs.umeng.share.core
     implementation libs.umeng.share.wx
     implementation libs.wechatsdk
 //    implementation 'com.github.yoakerin.MKit:umeng-share:main-SNAPSHOT'

@@ -1,13 +1,18 @@
 package com.yoake.umeng_share
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LifecycleOwner
 
 import com.tencent.tauth.Tencent
 import com.umeng.commonsdk.UMConfigure
 import com.umeng.socialize.PlatformConfig
+import com.umeng.socialize.UMAuthListener
 import com.umeng.socialize.UMShareAPI
+import com.umeng.socialize.bean.SHARE_MEDIA
 
 
 object UmengKit {
@@ -56,6 +61,11 @@ object UmengKit {
         data: Intent?
     ) {
         UMShareAPI.get(context).onActivityResult(requestCode, resultCode, data)
+    }
+
+    fun release(context: Context) {
+        UMShareAPI.get(context).release();
+
     }
 
 
