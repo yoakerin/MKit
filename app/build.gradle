@@ -6,7 +6,7 @@ plugins {
 android {
     signingConfigs {
         debug {
-            storeFile file('/Users/yoake/Documents/Android/other/myCode/Mkit/hbdt.keystore')
+            storeFile file('../hbdt.keystore')
             storePassword '123456'
             keyAlias 'hbdtkey'
             keyPassword '123456'
