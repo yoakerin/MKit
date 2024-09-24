@@ -32,9 +32,9 @@ class R2LocationManager private constructor(private val context: Context) {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
+
     /**
      * 获取设备的当前位置
-     *
      */
     fun getCurrentLocation(
         cache: Long = 5 * 60_000,
@@ -49,38 +49,55 @@ class R2LocationManager private constructor(private val context: Context) {
             onResult(cacheLocation, null)
             return
         }
-        val locationListener = object : LocationListener {
-            override fun onLocationChanged(location: Location) {
-                lastLocationTime = System.currentTimeMillis()
-                // 返回获取到的位置信息
-                onResult(location, null)
-                // 停止位置更新
-                locationManager.removeUpdates(this)
+
+        // 尝试通过网络获取位置，若失败则回退到 GPS
+        getLocationFromProvider(LocationManager.NETWORK_PROVIDER) { location, error ->
+            location?.let {
+                onResult(it, null)
+            } ?: run {
+                getLocationFromProvider(LocationManager.GPS_PROVIDER, onResult)
             }
-
-            override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
-
-            override fun onProviderEnabled(provider: String) {}
-
-            override fun onProviderDisabled(provider: String) {
-                onResult(cacheLocation, "Provider disabled")
-            }
-        }
-
-        try {
-            // 获取GPS或网络位置提供者的更新
-            locationManager.requestLocationUpdates(
-                LocationManager.GPS_PROVIDER, 0L, 0f, locationListener
-            )
-
-            locationManager.requestLocationUpdates(
-                LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener
-            )
-        } catch (e: Exception) {
-            e.printStackTrace()
-            onResult(cacheLocation, "Error retrieving location: ${e.message}")
         }
     }
+
+    /**
+     * 通用方法：根据提供者类型获取位置
+     */
+    private fun getLocationFromProvider(
+        provider: String,
+        onResult: (location: Location?, error: String?) -> Unit
+    ) {
+        try {
+            if (!locationManager.isProviderEnabled(provider)) {
+                onResult(null, "$provider 被禁用")
+                return
+            }
+
+            locationManager.requestLocationUpdates(provider, 0L, 0f, object : LocationListener {
+                override fun onLocationChanged(location: Location) {
+                    lastLocationTime = System.currentTimeMillis()
+                    cacheLocation = location
+                    locationManager.removeUpdates(this)
+                    onResult(location, null)
+                }
+
+                override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
+
+                override fun onProviderEnabled(provider: String) {}
+
+                override fun onProviderDisabled(provider: String) {
+                    locationManager.removeUpdates(this)
+                    onResult(null, "$provider 被禁用")
+                }
+            })
+        } catch (e: SecurityException) {
+            onResult(null, "权限错误: ${e.message}")
+        } catch (e: Exception) {
+            e.printStackTrace()
+            onResult(cacheLocation, "获取位置时出错: ${e.message}")
+        }
+    }
+
 
     // 将经纬度转换为地址
     fun getAddressFromLocation(location: Location): Address? {

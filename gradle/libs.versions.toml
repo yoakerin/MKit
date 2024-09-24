@@ -10,7 +10,11 @@ material = "1.12.0"
 paletteKtx = "1.0.0"
 wechatsdk = "6.8.28"
 sinaweibosdk = "13.10.2"
-
+glide = "4.16.0"
+glide_compiler = "4.16.0"
+glide_okhttp3 = "4.16.0"
+glide_transformations = "4.3.0"
+androidsvg = "1.4"
 # 友盟基础组件库
 umeng_common = "9.6.8"
 umeng_asms = "1.8.2"
@@ -23,34 +27,44 @@ umeng_share_qq = "7.3.3"
 
 quickAdapter = "4.1.4"
 [libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-androidx-palette-ktx = { group = "androidx.palette", name = "palette-ktx", version.ref = "paletteKtx" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+junit = { module = "junit:junit", version.ref = "junit" }
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junitVersion" }
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+androidx-palette-ktx = { module = "androidx.palette:palette-ktx", version.ref = "paletteKtx" }
 
 # 强大而灵活的RecyclerView Adapter
 # https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-quick_adapter = { group = "io.github.cymchad", name = "BaseRecyclerViewAdapterHelper4", version.ref = "quickAdapter" }
+quick_adapter = { module = "io.github.cymchad:BaseRecyclerViewAdapterHelper4", version.ref = "quickAdapter" }
+
+# Glide
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+glideOkhttp3 = { module = "com.github.bumptech.glide:okhttp3-integration", version.ref = "glide_okhttp3" }
+compiler_glide = { module = "com.github.bumptech.glide:compiler", version.ref = "glide_compiler" }
+glideTransformations = { module = "jp.wasabeef:glide-transformations", version.ref = "glide_transformations" }
+# glide对svg的支持
+androidsvg = { module = "com.caverock:androidsvg", version.ref = "androidsvg" }
+
 # 微信opensdk
 # https://developers.weixin.qq.com/doc/oplatform/Downloads/Android_SDK.html
-wechatsdk = { group = "com.tencent.mm.opensdk", name = "wechat-sdk-android", version.ref = "wechatsdk" }
+wechatsdk = { module = "com.tencent.mm.opensdk:wechat-sdk-android", version.ref = "wechatsdk" }
 
 # 新浪微博sdk
 # https://github.com/sinaweibosdk/weibo_android_sdk
-sinaweibosdk = { group = "io.github.sinaweibosdk", name = "core", version.ref = "sinaweibosdk" }
+sinaweibosdk = { module = "io.github.sinaweibosdk:core", version.ref = "sinaweibosdk" }
 
 # 友盟基础组件库
-umeng_common = { group = "com.umeng.umsdk", name = "common", version.ref = "umeng_common" }
-umeng_asms = { group = "com.umeng.umsdk", name = "asms", version.ref = "umeng_asms" }
+umeng_common = { module = "com.umeng.umsdk:common", version.ref = "umeng_common" }
+umeng_asms = { module = "com.umeng.umsdk:asms", version.ref = "umeng_asms" }
 
 # 友盟分享库
-umeng_share_core = { group = "com.umeng.umsdk", name = "share-core", version.ref = "umeng_share_core" }
-umeng_share_wx = { group = "com.umeng.umsdk", name = "share-wx", version.ref = "umeng_share_wx" }
-umeng_share_sina = { group = "com.umeng.umsdk", name = "share-sina", version.ref = "umeng_share_sina" }
-umeng_share_qq = { group = "com.umeng.umsdk", name = "share-qq", version.ref = "umeng_share_qq" }
+umeng_share_core = { module = "com.umeng.umsdk:share-core", version.ref = "umeng_share_core" }
+umeng_share_wx = { module = "com.umeng.umsdk:share-wx", version.ref = "umeng_share_wx" }
+umeng_share_sina = { module = "com.umeng.umsdk:share-sina", version.ref = "umeng_share_sina" }
+umeng_share_qq = { module = "com.umeng.umsdk:share-qq", version.ref = "umeng_share_qq" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

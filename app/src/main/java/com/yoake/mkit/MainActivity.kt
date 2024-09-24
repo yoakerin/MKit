@@ -3,27 +3,36 @@ package com.yoake.mkit
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
-import android.widget.Button
 import android.widget.GridLayout
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
+import androidx.lifecycle.lifecycleScope
 import com.umeng.socialize.UMAuthListener
 import com.umeng.socialize.UMShareAPI
 import com.umeng.socialize.bean.SHARE_MEDIA
+import com.yoake.graphic.utils.load
+import com.yoake.graphic.utils.loadRoundCorner
 import com.yoake.location.R2LocationManager
 import com.yoake.tools.R2Log
 import com.yoake.tools.kit.onClick
-import com.yoake.tools.kit.toast
 import com.yoake.tools.permissions.R2PermissionLauncher
+import com.yoake.tools.utils.R2StorageUtils
 import com.yoake.umeng_share.R2SharePanelDialog
 import com.yoake.umeng_share.ShareInfoImp
 import com.yoake.umeng_share.UmengKit
 import com.yoake.widgets.dialog.R2AlertDialog
+import com.yoake.widgets.dialog.R2LoadingDialog
+import com.yoake.widgets.popup.HorizontalGravity
+import com.yoake.widgets.popup.R2BasePopup
+import com.yoake.widgets.popup.VerticalGravity
 import com.yoake.widgets.progress.R2CountDownProgressView
+import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,8 +45,15 @@ class MainActivity : AppCompatActivity() {
         findViewById<R2CountDownProgressView>(R.id.testCountTimeProgressView).startCountTimeAnimation()
         //
         val container: GridLayout = findViewById(R.id.container)
+        val linearLayout: LinearLayout = findViewById(R.id.linearLayout)
+
 
         val infoTv: TextView = findViewById(R.id.infoTv)
+
+        (linearLayout[0] as ImageView).loadRoundCorner(
+            "https://img0.baidu.com/it/u=1298002161,2550912603&fm=253&fmt=auto&app=138&f=JPEG?w=1423&h=800",
+            10
+        )
         container[0].onClick {
             val myDialog = R2AlertDialog(this).builder()
             myDialog.setGone().setTitle("提示").setMsg("仿iOS的弹窗")
@@ -81,10 +97,7 @@ class MainActivity : AppCompatActivity() {
                     p1: Int,
                     p2: MutableMap<String, String>?
                 ) {
-                    p2?.forEach {
-                        R2Log.d("", "${it.key}=${it.value}")
-                    }
-                    infoTv.text ="昵称：${p2?.get("name")}"
+                    (linearLayout[1] as ImageView).load(p2?.get("iconurl"))
                 }
 
                 override fun onError(p0: SHARE_MEDIA?, p1: Int, p2: Throwable?) {
@@ -124,16 +137,49 @@ class MainActivity : AppCompatActivity() {
                         Manifest.permission.ACCESS_FINE_LOCATION,
                     ),
                     arrayOf("定位授权提示"),
-                    arrayOf(getString(com.yoake.umeng_share.R.string.share_panel_download_permission_tip)),
+                    arrayOf("获取当前位置"),
                 )
         }
 
+        container[4].onClick {
+            R2PermissionLauncher()
+                .with(this)
+                .denied {}
+                .granted {
+                    R2StorageUtils.saveNetworkImageToPicturePublicFolder(
+                        this,
+                        "https://img0.baidu.com/it/u=1298002161,2550912603&fm=253&fmt=auto&app=138&f=JPEG?w=1423&h=800"
+                    )
+                }
+                .request(
+                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    arrayOf("存储写入授权提示"),
+                    arrayOf(getString(com.yoake.umeng_share.R.string.share_panel_download_permission_tip)),
+                )
+        }
+        container[5].onClick {
+            val dialog = R2LoadingDialog(this)
+            dialog.show()
+            container[5].postDelayed({ dialog.dismiss() }, 3000)
+        }
+        container[6].onClick {
+            val popup = R2BasePopup(this)
+                .setContentView(R.layout.test_layout_1)
+                .setOutsideTouchable(false)
+                .setBackgroundDimEnable(true)
+                .setFocusAndOutsideEnable(true)
+                .createPopup()
+            popup.showAsDropDown(container[6], VerticalGravity.CENTER, HorizontalGravity.CENTER)
+            container[6].postDelayed({ popup.dismiss() }, 3000)
+
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         UmengKit.release(this)
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         UmengKit.onActivityResult(this, requestCode, resultCode, data)

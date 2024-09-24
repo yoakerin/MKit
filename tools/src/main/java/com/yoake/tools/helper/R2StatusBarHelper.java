@@ -238,7 +238,6 @@ public class R2StatusBarHelper {
 
         if (R2DeviceHelper.isMIUIV9()) {
             // MIUI 9 低于 6.0 版本依旧只能回退到以前的方案
-            // https://github.com/Tencent/QMUI_Android/issues/160
             MIUISetStatusBarLightMode(window, light);
         }
         return true;

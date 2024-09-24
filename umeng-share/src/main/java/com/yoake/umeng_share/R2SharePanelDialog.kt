@@ -30,8 +30,8 @@ import com.yoake.tools.kit.dimen
 import com.yoake.tools.kit.integer
 import com.yoake.tools.kit.onClick
 import com.yoake.tools.kit.toast
-import com.yoake.tools.obj.decoration.GridItemDecoration
-import com.yoake.tools.obj.decoration.LinearItemDecoration
+import com.yoake.tools.obj.decoration.R2GridItemDecoration
+import com.yoake.tools.obj.decoration.R2LinearItemDecoration
 import com.yoake.tools.permissions.R2PermissionLauncher
 import com.yoake.tools.utils.R2StorageUtils
 
@@ -78,12 +78,12 @@ class R2SharePanelDialog(private val mContext: Context) :
             val spanCount = mContext.integer(R.integer.share_panel_span_count)
             recyclerView.apply {
                 layoutManager = GridLayoutManager(mContext, spanCount)
-                addItemDecoration(GridItemDecoration(spanCount, 0, space, false))
+                addItemDecoration(R2GridItemDecoration(spanCount, 0, space, false))
             }
         } else {
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
-                addItemDecoration(LinearItemDecoration(space, space))
+                addItemDecoration(R2LinearItemDecoration(space, space))
             }
         }
         cancelView.onClick {

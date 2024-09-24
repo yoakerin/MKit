@@ -45,7 +45,7 @@ public class R2AlertDialog {
 
     public R2AlertDialog builder() {
         View view = LayoutInflater.from(context).inflate(
-                R.layout.view_alert_dialog, null);
+                R.layout.r2_layou_alert_dialog, null);
 
         lLayout_bg = view.findViewById(R.id.lLayout_bg);
         txt_title = view.findViewById(R.id.txt_title);
@@ -215,7 +215,7 @@ public class R2AlertDialog {
         if (!showPosBtn && !showNegBtn) {
             btn_pos.setText("");
             btn_pos.setVisibility(View.VISIBLE);
-            btn_pos.setBackgroundResource(R.drawable.alert_dialog_selector);
+            btn_pos.setBackgroundResource(R.drawable.r2_alert_dialog_selector);
             btn_pos.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -226,20 +226,20 @@ public class R2AlertDialog {
 
         if (showPosBtn && showNegBtn) {
             btn_pos.setVisibility(View.VISIBLE);
-            btn_pos.setBackgroundResource(R.drawable.alert_dialog_right_selector);
+            btn_pos.setBackgroundResource(R.drawable.r2_alert_dialog_right_selector);
             btn_neg.setVisibility(View.VISIBLE);
-            btn_neg.setBackgroundResource(R.drawable.alert_dialog_left_selector);
+            btn_neg.setBackgroundResource(R.drawable.r2_alert_dialog_left_selector);
             img_line.setVisibility(View.VISIBLE);
         }
 
         if (showPosBtn && !showNegBtn) {
             btn_pos.setVisibility(View.VISIBLE);
-            btn_pos.setBackgroundResource(R.drawable.alert_dialog_selector);
+            btn_pos.setBackgroundResource(R.drawable.r2_alert_dialog_selector);
         }
 
         if (!showPosBtn && showNegBtn) {
             btn_neg.setVisibility(View.VISIBLE);
-            btn_neg.setBackgroundResource(R.drawable.alert_dialog_selector);
+            btn_neg.setBackgroundResource(R.drawable.r2_alert_dialog_selector);
         }
     }
 

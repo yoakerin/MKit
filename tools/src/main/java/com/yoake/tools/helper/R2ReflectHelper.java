@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 
 public class R2ReflectHelper {
-    private static final String TAG = "QMUIReflectHelper";
+    private static final String TAG = "R2ReflectHelper";
 
     private R2ReflectHelper() {
     }

@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 public class R2ToastHelper {
-    private static final String TAG = "QMUIToastHelper";
+    private static final String TAG = "R2ToastHelper";
 
     public static void show(Toast toast) {
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.N_MR1) {

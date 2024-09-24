@@ -16,7 +16,7 @@ android {
     compileSdk 34
 
     defaultConfig {
-       // applicationId "com.yoake.mkit"
+        // applicationId "com.yoake.mkit"
         applicationId = "com.ihope.hbdt"
         minSdk 21
         targetSdk 34
@@ -53,6 +53,9 @@ dependencies {
     implementation project(':tools')
     implementation project(':widgets')
     implementation project(':umeng-share')
+    implementation project(':graphic')
+
+    implementation libs.glide
     implementation libs.umeng.share.core
     implementation libs.umeng.share.wx
     implementation libs.wechatsdk
