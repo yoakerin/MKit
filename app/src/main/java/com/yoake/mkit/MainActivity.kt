@@ -17,6 +17,7 @@ import com.umeng.socialize.UMAuthListener
 import com.umeng.socialize.UMShareAPI
 import com.umeng.socialize.bean.SHARE_MEDIA
 import com.yoake.graphic.utils.load
+import com.yoake.graphic.utils.loadBlur
 import com.yoake.graphic.utils.loadRoundCorner
 import com.yoake.location.R2LocationManager
 import com.yoake.tools.R2Log
@@ -50,9 +51,8 @@ class MainActivity : AppCompatActivity() {
 
         val infoTv: TextView = findViewById(R.id.infoTv)
 
-        (linearLayout[0] as ImageView).loadRoundCorner(
-            "https://img0.baidu.com/it/u=1298002161,2550912603&fm=253&fmt=auto&app=138&f=JPEG?w=1423&h=800",
-            10
+        (linearLayout[0] as ImageView).loadBlur(
+            "https://img0.baidu.com/it/u=1298002161,2550912603&fm=253&fmt=auto&app=138&f=JPEG?w=1423&h=800"
         )
         container[0].onClick {
             val myDialog = R2AlertDialog(this).builder()

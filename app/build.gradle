@@ -60,10 +60,10 @@ dependencies {
     implementation libs.umeng.share.wx
     implementation libs.wechatsdk
 
-//    implementation 'com.github.yoakerin.MKit:umeng-share:1.0.6'
-//    implementation 'com.github.yoakerin.MKit:tools:1.0.6'
-//    implementation 'com.github.yoakerin.MKit:wigets:1.0.6'
-//    implementation 'com.github.yoakerin.MKit:location:1.0.6'
-//    implementation 'com.github.yoakerin.MKit:graphic:1.0.6'
+//    implementation 'com.github.yoakerin.MKit:umeng-share:1.0.7'
+//    implementation 'com.github.yoakerin.MKit:tools:1.0.7'
+//    implementation 'com.github.yoakerin.MKit:widgets:1.0.7'
+//    implementation 'com.github.yoakerin.MKit:location:1.0.7'
+//    implementation 'com.github.yoakerin.MKit:graphic:1.0.7'
 
 }
