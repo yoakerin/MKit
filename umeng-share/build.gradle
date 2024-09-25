@@ -65,7 +65,7 @@ dependencies {
     //三方平台必要的库
     implementation(files("libs/open_sdk_3.5.14.4_r377deaa_lite.jar"))
     implementation libs.wechatsdk
-    compileOnly project(':tools')
+    implementation project(':tools')
     implementation(libs.sinaweibosdk) {
         exclude([module: "unspecified"])
     }
