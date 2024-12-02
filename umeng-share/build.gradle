@@ -66,5 +66,7 @@ dependencies {
     implementation(files("libs/open_sdk_3.5.14.4_r377deaa_lite.jar"))
     implementation libs.wechatsdk
     implementation project(':tools')
-    implementation(libs.sinaweibosdk)
+    implementation(libs.sinaweibosdk) {
+        exclude([module: "unspecified"])
+    }
 }

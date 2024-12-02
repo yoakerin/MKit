@@ -5,8 +5,8 @@
     android:layout_height="wrap_content"
     android:background="@color/orange"
     app:r2_borderColor="@color/cBBB"
-    app:r2_borderWidth="@dimen/dp2"
-    app:r2_radius="@dimen/dp4">
+    app:r2_borderWidth="@dimen/dp1"
+    app:r2_radius="@dimen/dp3">
 
     <TextView
         android:layout_width="wrap_content"

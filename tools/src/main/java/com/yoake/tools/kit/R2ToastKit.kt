@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import com.yoake.tools.R
 import com.yoake.tools.helper.R2ToastHelper
@@ -31,6 +32,10 @@ fun toast(context: Context, message: String?, duration: Int = Toast.LENGTH_SHORT
 
 fun View.toast(message: String?) {
     toast(context, message)
+}
+
+fun View.toast(@StringRes resId: Int) {
+    toast(context, resources.getString(resId))
 }
 
 fun Context.toast(message: String?) {

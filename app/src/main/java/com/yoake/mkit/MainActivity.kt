@@ -3,7 +3,6 @@ package com.yoake.mkit
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.widget.GridLayout
 import android.widget.ImageView
@@ -12,12 +11,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
-import androidx.lifecycle.lifecycleScope
 import com.umeng.socialize.UMAuthListener
 import com.umeng.socialize.UMShareAPI
 import com.umeng.socialize.bean.SHARE_MEDIA
 import com.yoake.graphic.utils.load
-import com.yoake.graphic.utils.loadBlur
 import com.yoake.graphic.utils.loadRoundCorner
 import com.yoake.location.R2LocationManager
 import com.yoake.tools.R2Log
@@ -27,13 +24,13 @@ import com.yoake.tools.utils.R2StorageUtils
 import com.yoake.umeng_share.R2SharePanelDialog
 import com.yoake.umeng_share.ShareInfoImp
 import com.yoake.umeng_share.UmengKit
+import com.yoake.video_player.VideoPlayerTest
 import com.yoake.widgets.dialog.R2AlertDialog
 import com.yoake.widgets.dialog.R2LoadingDialog
 import com.yoake.widgets.popup.HorizontalGravity
 import com.yoake.widgets.popup.R2BasePopup
 import com.yoake.widgets.popup.VerticalGravity
 import com.yoake.widgets.progress.R2CountDownProgressView
-import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
@@ -51,9 +48,11 @@ class MainActivity : AppCompatActivity() {
 
         val infoTv: TextView = findViewById(R.id.infoTv)
 
-        (linearLayout[0] as ImageView).loadBlur(
-            "https://img0.baidu.com/it/u=1298002161,2550912603&fm=253&fmt=auto&app=138&f=JPEG?w=1423&h=800"
+        (linearLayout[0] as ImageView).loadRoundCorner(
+            "https://img0.baidu.com/it/u=1298002161,2550912603&fm=253&fmt=auto&app=138&f=JPEG?w=1423&h=800",
+            20
         )
+
         container[0].onClick {
             val myDialog = R2AlertDialog(this).builder()
             myDialog.setGone().setTitle("提示").setMsg("仿iOS的弹窗")
@@ -98,6 +97,7 @@ class MainActivity : AppCompatActivity() {
                     p2: MutableMap<String, String>?
                 ) {
                     (linearLayout[1] as ImageView).load(p2?.get("iconurl"))
+
                 }
 
                 override fun onError(p0: SHARE_MEDIA?, p1: Int, p2: Throwable?) {
@@ -173,6 +173,10 @@ class MainActivity : AppCompatActivity() {
             container[6].postDelayed({ popup.dismiss() }, 3000)
 
         }
+        container[7].onClick {
+            startActivity(Intent(this, VideoPlayerTest::class.java))
+        }
+
     }
 
     override fun onDestroy() {
