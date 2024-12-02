@@ -53,14 +53,32 @@ dependencies {
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
 
+
     implementation project(':location')
     implementation project(':tools')
     implementation project(':widgets')
     implementation project(':video-player')
     implementation project(':umeng-share')
-   implementation project(':graphic')
+    implementation project(':graphic')
 
+
+
+
+
+    implementation libs.glideTransformations
     implementation libs.glide
+
+
+    //
+    implementation libs.androidsvg
+
+    //
+    implementation(libs.dkplayerJava)
+    implementation(libs.playerIjk)
+    implementation(libs.videocache)
+    implementation(libs.md360)
+    //
+
     implementation libs.umeng.share.core
     implementation libs.umeng.share.wx
     implementation libs.wechatsdk
